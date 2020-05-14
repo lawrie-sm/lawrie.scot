@@ -1,0 +1,66 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $bg-col;
+  color: $fg-col;
+  font-family: Anonymous Pro, sans-serif;
+}
+
+section {
+  margin: 3em 0;
+}
+
+a {
+  text-decoration: none;
+  color: $link-col;
+}
+
+a:visited {
+  color: $link-visited-col;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Nixie One, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  color: $alt-text-col;
+}
+
+h3 {
+  font-size: 3em;
+  margin: 0.5em 0;
+}
+
+p {
+  font-size: 1.3em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 2em 0;
+}
+
+hr {
+  border: 1px solid $alt-text-col;
+  margin: 3em 0;
+}
+
+footer {
+  margin: 1em;
+  color: $alt-text-col;
+  text-align: center;
+}

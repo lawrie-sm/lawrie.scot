@@ -1,0 +1,53 @@
+  /* Colours */
+
+  $bg-col: #282828;
+  $fg-col: #ebdbb2;
+  $link-col: #458588;
+  $link-visited-col: #b16286;
+  $alt-text-col: #928374;
+  $top-col-1: #458588;
+  $top-col-2: #ebdbb2;
+  $top-col-3: #689d6a;
+  $bot-col-1: #cc241d;
+  $bot-col-2: #fabd2f;
+  $bot-col-3: #d65d0e;
+  $top-header-gradient: linear-gradient(0.135turn, #{$top-col-1} 22%, #{$top-col-2} 50%, #{$top-col-3} 77%);
+  $bottom-header-gradient: linear-gradient(0.135turn, #{$bot-col-1} 22%, #{$bot-col-2} 50%, #{$bot-col-3} 77%);
+
+/* Fonts */
+
+@font-face {
+  font-family: 'Nixie One';
+  src: local('Nixie One'),
+        url('../fonts/nixieone-regular.woff2') format('woff2'),
+        url('../fonts/nixieone-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: local('Anonymous Pro'),
+        url('../fonts/anonymouspro-regular.woff2') format('woff2'),
+        url('../fonts/anonymouspro-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+000-5FF;
+}
+
+/* Animations */
+
+@-webkit-keyframes background-anim {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes background-anim {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0 0; }
+}

@@ -1,0 +1,9 @@
+.error-container {
+  margin: 8em;
+}
+
+.error-container > * {
+  color: var(--alt-text-col);
+  text-align: center;
+  margin: auto;
+}
