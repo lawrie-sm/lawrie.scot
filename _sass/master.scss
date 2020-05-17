@@ -71,11 +71,11 @@ a:hover {
 /* Errors */
 
 .error-container {
-  margin: 8em;
+  margin: 10em auto auto auto;
 }
 
 .error-container > * {
-  color: var(--alt-text-col);
+  color: $alt-text-col;
   text-align: center;
   margin: auto;
 }
