@@ -25,7 +25,7 @@ desc: 'The personal site of Lawrie Scott-McFarlane.'
     </p>
     <p>
     You can find me on
-    <a href="https://github.com/lawrie-sm">Github</a>,
+    <a href="https://github.com/lawrie-sm">GitHub</a>,
     <a href="https://www.linkedin.com/in/lawrie-sm ">LinkedIn</a> and
     <a href="https://twitter.com/lawrie_sm">Twitter</a>.
     </p>
@@ -33,6 +33,13 @@ desc: 'The personal site of Lawrie Scott-McFarlane.'
 
   <section>
     <h3>Projects</h3>
-    <p>Coming soon.</p>
+    <ul>
+      {% for p in site.data.projects %}
+      <li>
+        <a href="https://github.com/lawrie-sm/{{ p.repo }}">{{ p.name }}</a>
+        <span class="alt"> - {{ p.desc }}</span>
+      </li>
+      {% endfor %}
+    </ul>
   </section>
 </div>

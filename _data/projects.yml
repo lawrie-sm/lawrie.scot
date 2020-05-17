@@ -1,7 +1,5 @@
 ---
 
-# TODO
-# - name:
-#   desc:
-#   link:
-#   etc.
+- name: cultist-txt
+  repo: cultist-txt
+  desc: Twitter bot, built with Go
