@@ -2,4 +2,4 @@
 
 - name: cultist-txt
   repo: cultist-txt
-  desc: Twitter bot, built with Go
+  desc: A Twitter bot built with Go
