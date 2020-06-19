@@ -1,81 +1,47 @@
-/* Containers */
-
 html,
 body {
   height: 100%;
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $bg-col;
   color: $fg-col;
   font-family: Anonymous Pro, sans-serif;
 }
 
-section {
-  margin: 3em 0;
+#container {
+  max-width: 680px;
 }
 
-/* Headings */
+h1 {
+  background: $top-header-gradient;
+}
 
-h1,
-h2,
-h3,
-h4 {
+h2 {
+  background: $bottom-header-gradient;
+}
+
+h1, h2 {
   font-family: Nixie One, sans-serif;
-  font-size: 1em;
+  font-size: 50px;
   font-weight: 400;
   color: $alt-text-col;
+  color: transparent;
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-animation: background-anim 12s ease infinite;
+  animation: background-anim 12s ease infinite;
+  animation-delay: -3s;
 }
-
-h3 {
-  font-size: 3em;
-  margin: 0.5em 0;
-}
-
-/* Basic Text Elements */
 
 p, ul {
-  font-size: 1.3em;
+  font-size: 22px;
 }
-
-ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-  color: $link-col;
-}
-
-a:visited {
-  color: $link-visited-col;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Tailored Elements */
 
 #main {
   margin: 0 auto;
-  width: 80%;
-  max-width: 700px;
-}
-
-.alt {
-  color: $alt-text-col;
-}
-
-/* Errors */
-
-.error-container {
-  margin: 10em auto auto auto;
-}
-
-.error-container > * {
-  color: $alt-text-col;
-  text-align: center;
-  margin: auto;
 }
