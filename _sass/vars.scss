@@ -1,18 +1,42 @@
-  /* Colours */
+/* Colours */
 
-  $bg-col: #FBFFFE;
-  $fg-col: #29335C;
-  $link-col: #669BBC;
-  $link-visited-col: #669BBC;
-  $alt-text-col: #E4572E;
-  $top-col-1: #29335C;
-  $top-col-2: #669BBC;
-  $top-col-3: #29335C;
-  $bot-col-1: #29335C;
-  $bot-col-2: #669BBC;
-  $bot-col-3: #29335C;
-  $top-header-gradient: linear-gradient(0.135turn, #{$top-col-1} 22%, #{$top-col-2} 50%, #{$top-col-3} 77%);
-  $bottom-header-gradient: linear-gradient(0.135turn, #{$bot-col-1} 22%, #{$bot-col-2} 50%, #{$bot-col-3} 77%);
+:root {
+  --bg-col: #FFFFFF;
+  --bg-col-2: #E4F3E2;
+  --bg-gradient: linear-gradient(0.45turn, var(--bg-col) 40%, var(--bg-col-2));
+
+  --fg-col: #000000;
+  --link-col: #003F91;
+
+  --top-col-1: #5DA9E9;
+  --top-col-2: #003F91;
+  --top-col-3: #5DA9E9;
+  --bot-col-1: #003F91;
+  --bot-col-2: #5DA9E9;
+  --bot-col-3: #003F91;
+  --top-header-gradient: linear-gradient(0.135turn, var(--top-col-1) 22%, var(--top-col-2) 50%, var(--top-col-3) 77%);
+  --bottom-header-gradient: linear-gradient(0.135turn, var(--bot-col-1) 22%, var(--bot-col-2) 50%, var(--bot-col-3) 77%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-col: #003F91;
+    --bg-col-2: #000000;
+    --bg-gradient: linear-gradient(0.45turn, var(--bg-col) 40%, var(--bg-col-2));
+
+    --fg-col: #FFFFFF;
+    --link-col: #5DA9E9;
+
+    --top-col-1: #5DA9E9;
+    --top-col-2: #E4F3E2;
+    --top-col-3: #5DA9E9;
+    --bot-col-1: #E4F3E2;
+    --bot-col-2: #5DA9E9;
+    --bot-col-3: #E4F3E2;
+    --top-header-gradient: linear-gradient(0.135turn, var(--top-col-1) 22%, var(--top-col-2) 50%, var($top-col-3) 77%);
+    --bottom-header-gradient: linear-gradient(0.135turn, var(--bot-col-1) 22%, var(--bot-col-2) 50%, var(--bot-col-3) 77%);
+  }
+}
 
 /* Fonts */
 
@@ -28,10 +52,10 @@
 }
 
 @font-face {
-  font-family: 'Anonymous Pro';
-  src: local('Anonymous Pro'),
-        url('../fonts/anonymouspro-regular.woff2') format('woff2'),
-        url('../fonts/anonymouspro-regular.woff') format('woff');
+  font-family: 'Raleway';
+  src: local('Raleway'),
+        url('../fonts/raleway.woff2') format('woff2'),
+        url('../fonts/raleway.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: block;
