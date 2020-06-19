@@ -1,5 +1,6 @@
 ---
 
+# Example only
 - name: cultist-txt
   repo: cultist-txt
   desc: A Twitter bot built with Go
