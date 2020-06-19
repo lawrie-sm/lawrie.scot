@@ -1,16 +1,16 @@
   /* Colours */
 
-  $bg-col: #282828;
-  $fg-col: #ebdbb2;
-  $link-col: #458588;
-  $link-visited-col: #b16286;
-  $alt-text-col: #928374;
-  $top-col-1: #458588;
-  $top-col-2: #ebdbb2;
-  $top-col-3: #689d6a;
-  $bot-col-1: #cc241d;
-  $bot-col-2: #fabd2f;
-  $bot-col-3: #d65d0e;
+  $bg-col: #FBFFFE;
+  $fg-col: #001514;
+  $link-col: #6B0504;
+  $link-visited-col: #6B0504;
+  $alt-text-col: #D4AA7D;
+  $top-col-1: #6B0504;
+  $top-col-2: #E6AF2E;
+  $top-col-3: #A3320B;
+  $bot-col-1: #A3320B;
+  $bot-col-2: #E6AF2E;
+  $bot-col-3: #6B0504;
   $top-header-gradient: linear-gradient(0.135turn, #{$top-col-1} 22%, #{$top-col-2} 50%, #{$top-col-3} 77%);
   $bottom-header-gradient: linear-gradient(0.135turn, #{$bot-col-1} 22%, #{$bot-col-2} 50%, #{$bot-col-3} 77%);
 
