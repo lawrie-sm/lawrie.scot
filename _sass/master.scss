@@ -1,99 +1,50 @@
-html, body {
+body,
+html,
+#field {
+  width: 100%;
   height: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 body {
-  color: var(--fg-col);
-  background-image: var(--bg-gradient);
-  font-family: "Raleway", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-#container {
-  max-width: 750px;
+#field {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+h1,
+h2,
+a,
+a:visited {
+  font-size: 4rem;
+  line-height: 1.4em;
+  color: white;
+  text-decoration: none;
+  font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
+}
+
+header {
+  margin-bottom: 2rem;
 }
 
 h1 {
-  background: var(--top-header-gradient);
+  color: red;
 }
 
 h2 {
-  background: var(--bottom-header-gradient);
-}
-
-h1, h2 {
-  font-family: Nixie One, sans-serif;
-  font-size: 40px;
-  margin: 0px 15px 20px 15px;
-  font-weight: 600;
-  color: transparent;
-  background-size: 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-animation: background-anim 12s ease infinite;
-  animation: background-anim 12s ease infinite;
-  animation-delay: -3s;
-}
-
-h2 {
-  margin-bottom: 30px;
-}
-
-p {
-  font-size: 18px;
-  margin: 15px 15px;
-  line-height: 20px;
-}
-
-a {
-  color: var(--link-col);
-}
-
-a:visited {
-  color: var(--link-col);
-}
-
-/* Scale up for big screens */
-
-@media only screen and (min-width: 450px) and (min-height: 450px) {
-  #container {
-    margin: 120px auto 120px auto;
-  }
-
-  h1, h2 {
-    font-size: 54px;
-    margin: 15px 15px;
-  }
-
-  h2 {
-    margin-bottom: 50px;
-  }
-
-  p {
-    font-size: 22px;
-    margin: 20px 15px;
-    line-height: 28px;
-  }
-}
-
-/* Tweak for tall, thin screens like the new iPhones */
-@media only screen and (max-width: 500px) and (min-height: 700px) {
-  h1, h2 {
-    margin: 30px 15px;
-  }
-
-  h2 {
-    margin-bottom: 80px;
-  }
-
-  p {
-    font-size: 22px;
-    margin: 20px 15px;
-    line-height: 28px;
-  }
+  color: green;
 }
