@@ -11,7 +11,7 @@ elements.forEach((element) => {
   element.innerHTML = "";
   text.split("").forEach((letter) => {
     const span = document.createElement("span");
-    span.innerHTML = letter;
+    span.innerHTML = letter === " " ? "&nbsp;" : letter;
     span.classList.add(zTextLetterClass);
     element.appendChild(span);
   });

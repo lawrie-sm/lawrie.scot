@@ -17,7 +17,6 @@ a,
 a:visited {
   font-size: 4rem;
   line-height: 1.4em;
-  color: white;
   text-decoration: none;
   font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 }
@@ -27,6 +26,8 @@ a:visited {
   font-size: 68px;
   width: 100%;
   margin-bottom: 60px;
+  cursor: default;
+  user-select: none;
 }
 
 header {
@@ -36,54 +37,68 @@ header {
 }
 
 h1 {
+  color: #fcfad4;
 }
 
 h2 {
   color: #f2e422;
 }
 
-// use js to make letters, eyes emoji that points to cursor (also use eyes in favicon)
+a {
+  color: #6e97ff;
+}
+
 @keyframes rotations {
   0% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform: translateY(0%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   }
   25% {
-    transform: rotateX(30deg) rotateY(0deg) rotateZ(7.5deg);
+    transform: translateY(10%) rotateX(30deg) rotateY(0deg) rotateZ(7.5deg);
+  }
+  50% {
+    transform: translateY(0%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   }
   75% {
-    transform: rotateX(-30deg) rotateY(0deg) rotateZ(-7.5deg);
+    transform: translateY(-10%) rotateX(-30deg) rotateY(0deg) rotateZ(-7.5deg);
   }
   100% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform: translateY(0%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes flash {
+  0% {
+    transform: translateY(0%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    color: #fff;
+  }
+  100% {
+    transform: translateY(0%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    color: #6e97ff;
   }
 }
 
 .bouncy-letter {
   .z-text {
-    animation: 1s linear 0.1s infinite normal forwards rotations;
-  }
-
-  // Todo make this a mixin
-  .z-layer {
-    background-color: red;
-    background-image: linear-gradient(45deg, #f3ec78, red);
-    background-size: 100%;
-    background-repeat: repeat;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
+    animation: 0.5s linear 0.1s infinite normal forwards rotations;
   }
 
   .z-layer:not(:first-child) {
     filter: brightness(0.7);
   }
-  @for $i from 1 through 20 {
+
+  @for $i from 1 through 50 {
     &:nth-child(#{$i}) {
       .z-text {
         animation-delay: #{$i * 0.05}s;
       }
+    }
+  }
+}
+
+a:hover {
+  .bouncy-letter {
+    .z-text {
+      animation: 0.25s linear 0.1s infinite normal forwards flash;
     }
   }
 }
