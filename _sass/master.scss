@@ -1,4 +1,6 @@
-html, body {
+html,
+body {
+  width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
@@ -7,7 +9,7 @@ html, body {
 body {
   color: var(--fg-col);
   background-image: var(--bg-gradient);
-  font-family: "Raleway", sans-serif;
+  font-family: monospace;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,8 +28,9 @@ h2 {
   background: var(--bottom-header-gradient);
 }
 
-h1, h2 {
-  font-family: Nixie One, sans-serif;
+h1,
+h2 {
+  font-family: monospace;
   font-size: 40px;
   margin: 0px 15px 20px 15px;
   font-weight: 600;
@@ -44,10 +47,17 @@ h2 {
   margin-bottom: 30px;
 }
 
-p {
-  font-size: 18px;
+ul {
+  list-style: socials;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  font-size: 36px;
+  line-height: 42px;
   margin: 15px 15px;
-  line-height: 20px;
 }
 
 a {
@@ -65,7 +75,8 @@ a:visited {
     margin: 120px auto 120px auto;
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     font-size: 54px;
     margin: 15px 15px;
   }
@@ -81,19 +92,25 @@ a:visited {
   }
 }
 
-/* Tweak for tall, thin screens like the new iPhones */
 @media only screen and (max-width: 500px) and (min-height: 700px) {
-  h1, h2 {
-    margin: 30px 15px;
-  }
-
   h2 {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
 
-  p {
-    font-size: 22px;
-    margin: 20px 15px;
+  li {
+    font-size: 24px;
     line-height: 28px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  h1,
+  h2 {
+    font-size: 20px;
+  }
+
+  li {
+    font-size: 18px;
+    line-height: 20px;
   }
 }
