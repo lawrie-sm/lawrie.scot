@@ -1,9 +1,0 @@
----
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: "master"
-
-exclude: ["deploy.sh"]
