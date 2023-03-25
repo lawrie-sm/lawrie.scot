@@ -1,14 +1,13 @@
-:root {
-  --xxs-screen-width: 300px;
-  --bg-col: #f5f5f5;
-  --fg-col: #333333;
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url('AnonymousPro-Regular.ttf') format('truetype');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-col: #333333;
-    --fg-col: #f5f5f5;
-  }
+:root {
+  --xxs-screen-width: 300px;
+  --fg-col: #f5f5f5;
+  --bg-col: #333333;
+  --hov-col: #666666;
 }
 
 html,
@@ -22,7 +21,7 @@ body {
 body {
   color: var(--fg-col);
   background-color: var(--bg-col);
-  font-family: monospace;
+  font-family: 'Anonymous Pro', monospace;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,4 +66,12 @@ h2,
 a:visited,
 a {
   color: var(--fg-col);
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: wavy underline;
 }
