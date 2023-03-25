@@ -54,10 +54,10 @@
         vec2 p = floor(x);
         vec2 f = fract(x);
         f = f*f*(3.0-2.0*f);
-        float a = texture2DLodEXT(uChannel0, fract((p + vec2(0.5, 0.5)) / 256.0), 0.0).x; // Add fract() here
-        float b = texture2DLodEXT(uChannel0, fract((p + vec2(1.5, 0.5)) / 256.0), 0.0).x; // Add fract() here
-        float c = texture2DLodEXT(uChannel0, fract((p + vec2(0.5, 1.5)) / 256.0), 0.0).x; // Add fract() here
-        float d = texture2DLodEXT(uChannel0, fract((p + vec2(1.5, 1.5)) / 256.0), 0.0).x;
+        float a = texture2DLodEXT(uChannel0, (p + vec2(0.5, 0.5)) / 256.0, 0.0).x;
+        float b = texture2DLodEXT(uChannel0, (p + vec2(1.5, 0.5)) / 256.0, 0.0).x;
+        float c = texture2DLodEXT(uChannel0, (p + vec2(0.5, 1.5)) / 256.0, 0.0).x;
+        float d = texture2DLodEXT(uChannel0, (p + vec2(1.5, 1.5)) / 256.0, 0.0).x;
         return mix(mix(a, b,f.x), mix(c, d,f.x),f.y);
       }
 
