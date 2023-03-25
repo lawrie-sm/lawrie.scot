@@ -1,7 +1,6 @@
 let gl = null;
 let glCanvas = null;
 
-
 function initGL() {
   glCanvas = document.getElementById("gl-canvas");
   gl = glCanvas.getContext("webgl");
@@ -15,7 +14,7 @@ function compileShader(elementId, shaderType) {
   gl.compileShader(shader);
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error("Error compiling shader: " + gl.getShaderInfoLog(shader), gl.getShaderInfoLog(shader));
+    console.error(`Error compiling shader:\n${elementId}\n${gl.getShaderInfoLog(shader)}`);
     return null;
   }
 
@@ -58,11 +57,6 @@ function linkProgram(shaders, uniforms, attributes) {
   };
 }
 
-let vertexBuffer;
-let vertexCount;
-
-window.addEventListener("load", startup, false);
-
 function resize(canvas) {
   let displayWidth = canvas.clientWidth;
   let displayHeight = canvas.clientHeight;
@@ -73,28 +67,52 @@ function resize(canvas) {
   }
 }
 
-function animate() {
+let vertexBuffer;
+let vertexCount;
+
+let currentTime = 0;
+let previousTime = 0;
+let deltaTime = 0;
+
+let mouseX = 0;
+let mouseY = 0;
+
+function animate(time) {
   resize(glCanvas);
   gl.viewport(0, 0, glCanvas.width, glCanvas.height);
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 
+  gl.useProgram(shaderProgram.program);
+
   gl.enableVertexAttribArray(shaderProgram.attributeLocations["aVertexPosition"]);
   gl.vertexAttribPointer(shaderProgram.attributeLocations["aVertexPosition"], 2, gl.FLOAT, false, 16, 0);
-  gl.enableVertexAttribArray(shaderProgram.attributeLocations["aTexturePosition"]);
-  gl.vertexAttribPointer(shaderProgram.attributeLocations["aTexturePosition"], 2, gl.FLOAT, false, 16, 8);
 
-  gl.useProgram(shaderProgram.program);
+  // gl.enableVertexAttribArray(shaderProgram.attributeLocations["aTexturePosition"]);
+  // gl.vertexAttribPointer(shaderProgram.attributeLocations["aTexturePosition"], 2, gl.FLOAT, false, 16, 8);
+
+  gl.uniform2f(shaderProgram.uniformLocations["uResolution"], glCanvas.width, glCanvas.height);
+  gl.uniform2f(shaderProgram.uniformLocations["uMouse"], mouseX, mouseY);
+
+  currentTime = time * 0.001;
+  deltaTime = currentTime - previousTime;
+  previousTime = currentTime;
+  gl.uniform1f(shaderProgram.uniformLocations["uTime"], currentTime);
+  gl.uniform1f(shaderProgram.uniformLocations["uDeltaTime"], deltaTime);
+
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, vertexCount);
 
-  window.requestAnimationFrame(function(currentTime) {
-    previousTime = currentTime;
-    animate();
-  });
+  window.requestAnimationFrame(animate)
 }
 
 function startup() {
+  window.addEventListener("mousemove", (event) => {
+    const rect = glCanvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = glCanvas.height - (event.clientY - rect.top);
+  });
+
   initGL();
 
   const shaders = [
@@ -108,8 +126,8 @@ function startup() {
     }
   ];
 
-  const uniforms = [];
-  const attributes = ["aVertexPosition", "aTexturePosition"];
+  const uniforms = ["uTime", "uDeltaTime", "uResolution", "uMouse"];
+  const attributes = ["aVertexPosition"];
   shaderProgram = linkProgram(shaders, uniforms, attributes);
 
   let vertices = new Float32Array([
@@ -128,4 +146,4 @@ function startup() {
   animate();
 }
 
-startup();
+window.addEventListener("load", startup, false);

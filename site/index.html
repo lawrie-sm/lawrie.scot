@@ -28,11 +28,16 @@
 
     <script id="vertex-shader" type="x-shader/x-vertex">
       attribute vec2 aVertexPosition;
-      attribute vec2 aTexturePosition;
-      varying vec2 tPos;
+
+      uniform float uTime;
+      uniform float uDeltaTime;
+      uniform vec2 uResolution;
+      uniform vec2 uMouse;
+
+      varying vec2 vFragCoord;
 
       void main() {
-        tPos = aTexturePosition;
+        vFragCoord = aVertexPosition * 0.5 * uResolution + 0.5 * uResolution;
         gl_Position = vec4(aVertexPosition, 0.0, 1.0);
       }
     </script>
@@ -41,10 +46,28 @@
       #ifdef GL_ES
         precision highp float;
       #endif
-      varying vec2 tPos;
+
+      uniform vec2 uResolution;
+      uniform vec2 uMouse;
+
+      varying vec2 vFragCoord;
+
+      float circleRadius = 0.005;
 
       void main(void) {
-        gl_FragColor = vec4(tPos, 0.0, 1.0);
+        vec2 normalisedMousePos = uMouse / uResolution;
+        vec2 normalisedFragCoord = vFragCoord / uResolution;
+        float aspectRatio = uResolution.x / uResolution.y;
+        vec2 aspectCorrectedFragCoord = vec2(normalisedFragCoord.x, normalisedFragCoord.y / aspectRatio);
+        vec2 aspectCorrectedMousePos = vec2(normalisedMousePos.x, normalisedMousePos.y / aspectRatio);
+
+        float dist = distance(aspectCorrectedFragCoord, aspectCorrectedMousePos);
+
+        if (dist < circleRadius) {
+          gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        } else {
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+        }
       }
     </script>
 
