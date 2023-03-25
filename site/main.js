@@ -1,13 +1,18 @@
 let gl = null;
 let glCanvas = null;
+
 let texture;
 const textureUrl = "noise.png";
+
 const brightness = 0.5;
 
 function initGL() {
   glCanvas = document.getElementById("gl-canvas");
   gl = glCanvas.getContext("webgl");
   const textureLodExt = gl.getExtension("EXT_shader_texture_lod");
+  if (!textureLodExt) {
+    throw new Error("EXT_shader_texture_lod not supported");
+  }
 }
 
 function loadTexture(url) {
@@ -33,8 +38,7 @@ function compileShader(elementId, shaderType) {
   gl.compileShader(shader);
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error(`Error compiling shader:\n${elementId}\n${gl.getShaderInfoLog(shader)}`);
-    return null;
+    throw new Error(`Error compiling shader:\n${elementId}\n${gl.getShaderInfoLog(shader)}`);
   }
 
   return shader;
@@ -53,8 +57,7 @@ function linkProgram(shaders, uniforms, attributes) {
   gl.linkProgram(program);
 
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.error("Error linking program: " + gl.getProgramInfoLog(program));
-    return null;
+    throw new Error(`Error linking program: ${gl.getProgramInfoLog(program)}`);
   }
 
   let uniformLocations = {};
@@ -170,4 +173,10 @@ function startup() {
   animate();
 }
 
-window.addEventListener("load", startup, false);
+window.addEventListener("load", () => {
+  try {
+    startup();
+  } catch (e) {
+    console.error(e);
+  }
+}, false);
